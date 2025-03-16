@@ -1,0 +1,285 @@
+<!-- WhatsApp Chat Widget -->
+<div id="whatsapp-chat-widget" class="whatsapp-chat-widget">
+  <button id="whatsapp-icon-button" class="whatsapp-icon" aria-label="Open WhatsApp chat">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24">
+      <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </button>
+  
+  <div id="whatsapp-popup" class="whatsapp-popup">
+    <div class="whatsapp-popup-header">
+      <h3>WhatsApp Chat</h3>
+      <button id="whatsapp-close" class="whatsapp-close" aria-label="Close WhatsApp popup">&times;</button>
+    </div>
+    <div class="whatsapp-popup-content">
+      <div class="whatsapp-options">
+        <button id="direct-message-btn" class="whatsapp-option-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20">
+            <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157z"/>
+          </svg>
+          Message Us Directly
+        </button>
+        <button id="request-message-btn" class="whatsapp-option-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20">
+            <path fill="currentColor" d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/>
+          </svg>
+          Get a Message from Us
+        </button>
+      </div>
+      
+      <!-- Direct Message Form -->
+      <div id="direct-message-form" class="whatsapp-form" style="display: none;">
+        <p>Click the button below to message us directly on WhatsApp:</p>
+        <button type="button" id="direct-message-submit" class="whatsapp-submit">Chat Now</button>
+      </div>
+      
+      <!-- Request Message Form -->
+      <div id="request-message-form" class="whatsapp-form" style="display: none;">
+        <p>Enter your phone number and we'll contact you:</p>
+        <form id="whatsapp-form" onsubmit="return false;">
+          <input 
+            type="tel" 
+            id="whatsapp-phone" 
+            name="whatsapp-phone" 
+            placeholder="Enter phone number with country code" 
+            required
+          >
+          <button type="submit" id="whatsapp-submit" class="whatsapp-submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .whatsapp-chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+  
+  .whatsapp-icon {
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+  }
+  
+  .whatsapp-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  }
+  
+  .whatsapp-popup {
+    display: none;
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+  
+  .whatsapp-popup-header {
+    background-color: #25D366;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .whatsapp-popup-header h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .whatsapp-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+  }
+  
+  .whatsapp-popup-content {
+    padding: 15px;
+  }
+  
+  .whatsapp-popup-content p {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  
+  .whatsapp-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .whatsapp-option-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 12px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    color: #333;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .whatsapp-option-btn:hover {
+    background-color: #ebebeb;
+    border-color: #d0d0d0;
+  }
+  
+  .whatsapp-form {
+    margin-top: 15px;
+  }
+  
+  #whatsapp-phone {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .whatsapp-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #25D366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .whatsapp-submit:hover {
+    background-color: #20b556;
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    color: #25D366;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 10px;
+    font-size: 13px;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const whatsappButton = document.getElementById('whatsapp-icon-button');
+    const whatsappPopup = document.getElementById('whatsapp-popup');
+    const whatsappClose = document.getElementById('whatsapp-close');
+    const whatsappForm = document.getElementById('whatsapp-form');
+    const whatsappPhone = document.getElementById('whatsapp-phone');
+    
+    const directMessageBtn = document.getElementById('direct-message-btn');
+    const requestMessageBtn = document.getElementById('request-message-btn');
+    const directMessageForm = document.getElementById('direct-message-form');
+    const requestMessageForm = document.getElementById('request-message-form');
+    
+    // Business phone number
+    const businessPhone = "+917411431101";
+    
+    // Open popup
+    whatsappButton.addEventListener('click', function() {
+      whatsappPopup.style.display = 'block';
+      // Show options by default
+      directMessageForm.style.display = 'none';
+      requestMessageForm.style.display = 'none';
+      document.querySelector('.whatsapp-options').style.display = 'flex';
+    });
+    
+    // Close popup
+    whatsappClose.addEventListener('click', function() {
+      whatsappPopup.style.display = 'none';
+    });
+    
+    // Show direct message form
+    directMessageBtn.addEventListener('click', function() {
+      document.querySelector('.whatsapp-options').style.display = 'none';
+      directMessageForm.style.display = 'block';
+    });
+    
+    // Show request message form
+    requestMessageBtn.addEventListener('click', function() {
+      document.querySelector('.whatsapp-options').style.display = 'none';
+      requestMessageForm.style.display = 'block';
+    });
+    
+    // Handle direct message submission
+    document.getElementById('direct-message-submit').addEventListener('click', function() {
+      // Open WhatsApp with the business phone number
+      const whatsappUrl = `https://wa.me/${businessPhone}`;
+      window.open(whatsappUrl, '_blank');
+      
+      // Close popup
+      whatsappPopup.style.display = 'none';
+    });
+    
+    // Handle form submission for user entering their phone
+    document.getElementById('whatsapp-submit').addEventListener('click', function() {
+      if (whatsappPhone.value) {
+        // Format phone number (remove spaces, dashes, etc)
+        let phoneNumber = whatsappPhone.value.replace(/\D/g, '');
+        
+        // Add country code if not present
+        if (!phoneNumber.startsWith('+')) {
+          if (!phoneNumber.startsWith('1')) {
+            phoneNumber = '+' + phoneNumber;
+          } else {
+            phoneNumber = '+' + phoneNumber;
+          }
+        }
+        
+        // In a real implementation, you would send this number to your backend
+        // to trigger a message to the user. For now, we'll just show a success message:
+        alert(`Thank you! We'll send a message to ${phoneNumber} shortly.`);
+        
+        // Close popup and reset form
+        whatsappPopup.style.display = 'none';
+        whatsappForm.reset();
+      }
+    });
+    
+    // Close popup when clicking outside
+    document.addEventListener('click', function(event) {
+      const isClickInsidePopup = whatsappPopup.contains(event.target);
+      const isClickOnButton = whatsappButton.contains(event.target);
+      
+      if (whatsappPopup.style.display === 'block' && !isClickInsidePopup && !isClickOnButton) {
+        whatsappPopup.style.display = 'none';
+      }
+    });
+  });
+</script> 
