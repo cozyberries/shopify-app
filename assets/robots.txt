@@ -1,8 +1,5 @@
 User-agent: *
 Allow: /
-{% if request.host contains '.myshopify.com' %}
-Disallow: /
-{% endif %}
 
 # Allow all bots to access these paths
 Allow: /cdn/
