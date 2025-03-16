@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+{% if request.host contains '.myshopify.com' %}
+Disallow: /
+{% endif %}
+
+# Allow all bots to access these paths
+Allow: /cdn/
+Allow: /shop/
+Allow: /products/
+Allow: /collections/
+Allow: /blogs/
+Allow: /pages/
+
+# Block these query parameters
+Disallow: /*?*checkout*
+Disallow: /*?*preview*
+Disallow: /*?*login*
+Disallow: /*?*sorted*
+Disallow: /*?*filter*
+Disallow: /*?*view=*
+
+# Block search
+Disallow: /search
+
+# Block feeds
+Disallow: /*/feeds/*
+
+# Sitemap
+Sitemap: https://{{ shop.domain }}/sitemap.xml 
